@@ -7,10 +7,10 @@ MAINTAINER  Fonix Hardcastle, <me@fonix.online>
 ENV         DEBIAN_FRONTEND noninteractive
 
 RUN 
-            && apt-get update \
-            && apt-get upgrade -y \
-            && apt-get install -y tar libgl1-mesa-dev curl gcc g++ lib32gcc1 lib32tinfo5 lib32z1 lib32stdc++6 libtinfo5:i386 libncurses5:i386 libcurl3-gnutls:i386 \
-            && useradd -m -d /home/container container  \
+          apt-get update \
+          apt-get upgrade -y \
+          apt-get install -y tar libgl1-mesa-dev curl gcc g++ lib32gcc1 lib32tinfo5 lib32z1 lib32stdc++6 libtinfo5:i386 libncurses5:i386 libcurl3-gnutls:i386 \
+          useradd -m -d /home/container container  \
 
     ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases/download" && \
     ALPINE_GLIBC_PACKAGE_VERSION="2.25-r0" && \
