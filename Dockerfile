@@ -36,7 +36,7 @@ RUN
     rm \
         "$ALPINE_GLIBC_BASE_PACKAGE_FILENAME" \
         "$ALPINE_GLIBC_BIN_PACKAGE_FILENAME" \
-        "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME"
+        "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME" \
 
             dpkg --add-architecture i386 \
             && apt-get update \
