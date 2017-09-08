@@ -1,12 +1,17 @@
 # ----------------------------------
-# Environment: Source Engine
+# Environment: Source Engine by Fonix
 # ----------------------------------
-FROM        ubuntu:16.04
+FROM alpine:3.6
 
 MAINTAINER  Fonix Hardcastle, <me@fonix.online>
 ENV         DEBIAN_FRONTEND noninteractive
-# Install Dependencies
-RUN         
+
+RUN 
+            && apt-get update \
+            && apt-get upgrade -y \
+            && apt-get install -y tar libgl1-mesa-dev curl gcc g++ lib32gcc1 lib32tinfo5 lib32z1 lib32stdc++6 libtinfo5:i386 libncurses5:i386 libcurl3-gnutls:i386 \
+            && useradd -m -d /home/container container  \
+
     ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases/download" && \
     ALPINE_GLIBC_PACKAGE_VERSION="2.25-r0" && \
     ALPINE_GLIBC_BASE_PACKAGE_FILENAME="glibc-$ALPINE_GLIBC_PACKAGE_VERSION.apk" && \
@@ -38,14 +43,11 @@ RUN
         "$ALPINE_GLIBC_BIN_PACKAGE_FILENAME" \
         "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME" \
 
-            dpkg --add-architecture i386 \
-            && apt-get update \
-            && apt-get upgrade -y \
-            && apt-get install -y tar libgl1-mesa-dev curl gcc g++ lib32gcc1 lib32tinfo5 lib32z1 lib32stdc++6 libtinfo5:i386 libncurses5:i386 libcurl3-gnutls:i386 \
-            && useradd -m -d /home/container container
+            dpkg --add-architecture i386 
 
 USER        container
 ENV         HOME /home/container
+ENV 		LANG=C.UTF-8
 WORKDIR     /home/container
 
 COPY        ./entrypoint.sh /entrypoint.sh
