@@ -9,7 +9,7 @@ ENV         DEBIAN_FRONTEND noninteractive
 RUN         dpkg --add-architecture i386 \
             && apt-get update \
             && apt-get upgrade -y \
-            && apt-get install -y tar curl gcc g++ ia32-libs libglew-dev libcheese7 libcheese-gtk23 libclutter-gst-2.0-0 libcogl15 libclutter-gtk-1.0-0 libclutter-1.0-0 libgl1-mesa-dri libglu1 lib32gcc1 lib32tinfo5 lib32z1 lib32stdc++6 libtinfo5:i386 libncurses5:i386 libcurl3-gnutls:i386 \
+            && apt-get install -y tar curl gcc g++ libglew-dev libclutter-gst-2.0-0 libclutter-gtk-1.0-0 libclutter-1.0-0 libgl1-mesa-dri libglu1 lib32gcc1 lib32tinfo5 lib32z1 lib32stdc++6 libtinfo5:i386 libncurses5:i386 libcurl3-gnutls:i386 \
             && useradd -m -d /home/container container
 
 USER        container
